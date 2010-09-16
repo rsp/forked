@@ -5,7 +5,8 @@ You may redistribute it under certain conditions.
 See LICENSE for details.
 
 Forked clones your forked version of a github repository
-using conventions from http://help.github.com/forking/
+using conventions from: http://help.github.com/forking/
+Project home page: http://github.com/rsp/forked
 
 Usage: forked USER REPOSITORY
 

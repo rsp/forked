@@ -7,7 +7,8 @@ echo "You may redistribute it under certain conditions."
 echo "See LICENSE for details."
 echo
 echo "Forked clones your forked version of a github repository"
-echo "using conventions from http://help.github.com/forking/"
+echo "using conventions from: http://help.github.com/forking/"
+echo "Project home page: http://github.com/rsp/forked"
 echo
 me=rsp  # <--- CHANGE IT TO YOUR GITHUB USERNAME
 user=$1
