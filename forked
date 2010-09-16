@@ -1,0 +1,41 @@
+#!/bin/bash
+# RSP 2010-09-16
+echo
+echo "Forked  Copyright (C) 2010  Rafal Pocztarski"
+echo "This program comes with ABSOLUTELY NO WARRANTY."
+echo
+echo "Forked clones your forked version of a github repository"
+echo "using conventions from http://help.github.com/forking/"
+echo
+me=rsp  # <--- CHANGE IT TO YOUR GITHUB USERNAME
+user=$1
+repo=$2
+if [ "$repo" == "" ]; then
+    echo "Usage: forked USER REPOSITORY"
+    echo
+    echo "Clones repository:"
+    echo "    git@github.com:YOU/REPOSITORY.git"
+    echo "and adds upstream remote:"
+    echo "    git://github.com/USER/REPOSITORY.git"
+    echo
+    echo "You have to fork it on github first using the Fork button on:"
+    echo "    http://github.com/USER/REPOSITORY"
+    echo "and set your github username in the source code of this script."
+    echo
+    echo "Your github username is set to: $me"
+    echo
+    exit 1
+fi
+origin=git@github.com:$me/$repo.git
+upstream=git://github.com/$user/$repo.git
+echo "Your github username is set to: $me"
+echo "Forked is going to clone:"
+echo "    $origin"
+echo "and add remote upstream:"
+echo "    $upstream"
+git clone $origin && \
+cd $repo && \
+git remote add upstream $upstream && \
+git fetch upstream && \
+echo "Forked: Done" || echo "Forked: ERROR" && exit 2
+
