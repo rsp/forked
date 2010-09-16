@@ -1,6 +1,8 @@
 
-Forked  Copyright (C) 2010  Rafal Pocztarski
+Forked - Copyright (c) 2010 Rafal Pocztarski
 This program comes with ABSOLUTELY NO WARRANTY.
+You may redistribute it under certain conditions.
+See LICENSE for details.
 
 Forked clones your forked version of a github repository
 using conventions from http://help.github.com/forking/

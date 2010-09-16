@@ -1,8 +1,10 @@
 #!/bin/bash
 # RSP 2010-09-16
 echo
-echo "Forked  Copyright (C) 2010  Rafal Pocztarski"
+echo "Forked - Copyright (c) 2010 Rafal Pocztarski"
 echo "This program comes with ABSOLUTELY NO WARRANTY."
+echo "You may redistribute it under certain conditions."
+echo "See LICENSE for details."
 echo
 echo "Forked clones your forked version of a github repository"
 echo "using conventions from http://help.github.com/forking/"
