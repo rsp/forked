@@ -2,11 +2,10 @@
 Forked - Copyright (c) 2010 Rafal Pocztarski
 This program comes with ABSOLUTELY NO WARRANTY.
 You may redistribute it under certain conditions.
-See LICENSE for details.
+See LICENSE for details. http://github.com/rsp/forked
 
 Forked clones your forked version of a github repository
 using conventions from: http://help.github.com/forking/
-Project home page: http://github.com/rsp/forked
 
 Usage: forked USER REPOSITORY [DIRECTORY]
 Clones repository:

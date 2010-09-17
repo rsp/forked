@@ -4,14 +4,13 @@ echo
 echo "Forked - Copyright (c) 2010 Rafal Pocztarski"
 echo "This program comes with ABSOLUTELY NO WARRANTY."
 echo "You may redistribute it under certain conditions."
-echo "See LICENSE for details."
-echo
-echo "Forked clones your forked version of a github repository"
-echo "using conventions from: http://help.github.com/forking/"
-echo "Project home page: http://github.com/rsp/forked"
+echo "See LICENSE for details. http://github.com/rsp/forked"
 echo
 me=`git config github.user || whoami`
 if [ $# -lt 2 ] || [ $# -gt 3 ]; then
+    echo "Forked clones your forked version of a github repository"
+    echo "using conventions from: http://help.github.com/forking/"
+    echo
     echo "Usage: forked USER REPOSITORY [DIRECTORY]"
     echo "Clones repository:"
     echo "    git@github.com:YOU/REPOSITORY.git"
@@ -47,7 +46,7 @@ echo
 if [ -e $dir ] && [ "$(ls -A1 $dir | wc -l)" -ne 0 ]; then
     echo "$dir already exists and is not an empty directory."
     echo "Remove it manually or run forked with different arguments:"
-    echo "    forked USER REPOSITORY YOUR_LOCAL_DIRECTORY_NAME"
+    echo "    forked USER REPOSITORY SOME_OTHER_DIRECTORY_NAME"
     echo
     exit 2
 fi
@@ -55,5 +54,11 @@ git clone $origin $dir && \
 cd $dir && \
 git remote add upstream $upstream && \
 git fetch upstream && \
-echo -e "\nForked: DONE" || (echo -e "\nForked: ERROR"; exit 2)
-
+echo -e "\nForked: DONE" || { echo -e "\nForked: ERROR"; exit 2; }
+echo "The $repo repository has been cloned in $PWD"
+echo "You should now be able to:"
+echo -e "- push your changes to github using:\tgit push origin"
+echo -e "- fetch upstream changes using:\t\tgit fetch upstream"
+echo -e "- merge upstream changes using:\t\tgit merge upstream/master"
+echo "See: http://help.github.com/forking/"
+echo
