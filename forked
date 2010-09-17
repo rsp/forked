@@ -10,7 +10,9 @@ echo "Forked clones your forked version of a github repository"
 echo "using conventions from: http://help.github.com/forking/"
 echo "Project home page: http://github.com/rsp/forked"
 echo
-me=rsp  # <--- CHANGE IT TO YOUR GITHUB USERNAME
+# CHANGE 'me' TO YOUR GITHUB USERNAME IF DIFFERENT THAN LOCAL USERNAME:
+me=`whoami`
+#me=yourgithubusername
 user=$1
 repo=$2
 if [ "$repo" == "" ]; then
@@ -23,7 +25,8 @@ if [ "$repo" == "" ]; then
     echo
     echo "You have to fork it on github first using the Fork button on:"
     echo "    http://github.com/USER/REPOSITORY"
-    echo "and set your github username in the source code of this script."
+    echo "and set your github username in the source code of this script"
+    echo "if it is different than your local login name."
     echo
     echo "Your github username is set to: $me"
     echo
@@ -36,9 +39,10 @@ echo "Forked is going to clone:"
 echo "    $origin"
 echo "and add remote upstream:"
 echo "    $upstream"
+echo
 git clone $origin && \
 cd $repo && \
 git remote add upstream $upstream && \
 git fetch upstream && \
-echo "Forked: Done" || echo "Forked: ERROR" && exit 2
+echo -e "\nForked: DONE" || (echo -e "\nForked: ERROR"; exit 2)
 
