@@ -53,12 +53,24 @@ fi
 git clone $origin $dir && \
 cd $dir && \
 git remote add upstream $upstream && \
-git fetch upstream && \
-echo -e "\nForked: DONE" || { echo -e "\nForked: ERROR"; exit 2; }
-echo "The $repo repository has been cloned in $PWD"
-echo "You should now be able to:"
-echo -e "- push your changes to github using:\tgit push origin"
-echo -e "- fetch upstream changes using:\t\tgit fetch upstream"
-echo -e "- merge upstream changes using:\t\tgit merge upstream/master"
-echo "See: http://help.github.com/forking/"
-echo
+git fetch upstream && {
+    echo -e "\nForked: DONE"
+    echo "The $repo repository has been cloned in $PWD"
+    echo "You should now be able to:"
+    echo -e "- push your changes to github using:\tgit push origin"
+    echo -e "- fetch upstream changes using:\t\tgit fetch upstream"
+    echo -e "- merge upstream changes using:\t\tgit merge upstream/master"
+    echo "See: http://help.github.com/forking/"
+    echo
+} || {
+    echo -e "\nForked: ERROR"
+    echo "Make sure you have forked the project '$repo' using the Fork button on:"
+    echo "    http://github.com/$user/$repo"
+    echo "You should see: '$me/$repo forked from $user/$repo' on this page:"
+    echo "    http://github.com/$me/$repo"
+    echo "You must have git and ssh configured correctly to work with github."
+    echo "See: http://help.github.com/ for details."
+    echo
+    exit 3
+}
+
