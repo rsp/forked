@@ -10,9 +10,7 @@ echo "Forked clones your forked version of a github repository"
 echo "using conventions from: http://help.github.com/forking/"
 echo "Project home page: http://github.com/rsp/forked"
 echo
-# CHANGE 'me' TO YOUR GITHUB USERNAME IF DIFFERENT THAN LOCAL USERNAME:
-me=`whoami`
-#me=yourgithubusername
+me=`git config github.user || whoami`
 user=$1
 repo=$2
 if [ "$repo" == "" ]; then
@@ -25,7 +23,8 @@ if [ "$repo" == "" ]; then
     echo
     echo "You have to fork it on github first using the Fork button on:"
     echo "    http://github.com/USER/REPOSITORY"
-    echo "and set your github username in the source code of this script"
+    echo "and set your github username using:"
+    echo "    git config --global github.user USERNAME"
     echo "if it is different than your local login name."
     echo
     echo "Your github username is set to: $me"

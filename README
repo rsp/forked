@@ -17,6 +17,7 @@ and adds upstream remote:
 
 You have to fork it on github first using the Fork button on:
     http://github.com/USER/REPOSITORY
-and set your github username in the source code of this script
+and set your github username using:
+    git config --global github.user USERNAME
 if it is different than your local login name.
 
