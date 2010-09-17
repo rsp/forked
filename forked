@@ -11,25 +11,29 @@ echo "using conventions from: http://help.github.com/forking/"
 echo "Project home page: http://github.com/rsp/forked"
 echo
 me=`git config github.user || whoami`
-user=$1
-repo=$2
-if [ "$repo" == "" ]; then
-    echo "Usage: forked USER REPOSITORY"
-    echo
+if [ $# -lt 2 ] || [ $# -gt 3 ]; then
+    echo "Usage: forked USER REPOSITORY [DIRECTORY]"
     echo "Clones repository:"
     echo "    git@github.com:YOU/REPOSITORY.git"
     echo "and adds upstream remote:"
     echo "    git://github.com/USER/REPOSITORY.git"
+    echo "in directory DIRECTORY if specified or REPOSITORY otherwise."
     echo
     echo "You have to fork it on github first using the Fork button on:"
     echo "    http://github.com/USER/REPOSITORY"
     echo "and set your github username using:"
     echo "    git config --global github.user USERNAME"
     echo "if it is different than your local login name."
-    echo
-    echo "Your github username is set to: $me"
+    echo "Your github username that would be used right now is: $me"
     echo
     exit 1
+fi
+user=$1
+repo=$2
+if [ $# -eq 3 ]; then
+    dir=$3
+else
+    dir=$repo
 fi
 origin=git@github.com:$me/$repo.git
 upstream=git://github.com/$user/$repo.git
@@ -38,9 +42,17 @@ echo "Forked is going to clone:"
 echo "    $origin"
 echo "and add remote upstream:"
 echo "    $upstream"
+echo "in directory $dir"
 echo
-git clone $origin && \
-cd $repo && \
+if [ -e $dir ] && [ "$(ls -A1 $dir | wc -l)" -ne 0 ]; then
+    echo "$dir already exists and is not an empty directory."
+    echo "Remove it manually or run forked with different arguments:"
+    echo "    forked USER REPOSITORY YOUR_LOCAL_DIRECTORY_NAME"
+    echo
+    exit 2
+fi
+git clone $origin $dir && \
+cd $dir && \
 git remote add upstream $upstream && \
 git fetch upstream && \
 echo -e "\nForked: DONE" || (echo -e "\nForked: ERROR"; exit 2)
