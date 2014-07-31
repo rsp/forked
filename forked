@@ -15,7 +15,7 @@ if [ $# -lt 2 ] || [ $# -gt 3 ]; then
     echo "Clones repository:"
     echo "    git@github.com:YOU/REPOSITORY.git"
     echo "and adds upstream remote:"
-    echo "    git://github.com/USER/REPOSITORY.git"
+    echo "    git@github.com:USER/REPOSITORY.git"
     echo "in directory DIRECTORY if specified or REPOSITORY otherwise."
     echo
     echo "You have to fork it on github first using the Fork button on:"
