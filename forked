@@ -35,7 +35,7 @@ else
     dir=$repo
 fi
 origin=git@github.com:$me/$repo.git
-upstream=git://github.com/$user/$repo.git
+upstream=git@github.com:$user/$repo.git
 echo "Your github username is set to: $me"
 echo "Forked is going to clone:"
 echo "    $origin"
