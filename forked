@@ -4,12 +4,12 @@ echo
 echo "Forked - Copyright (c) 2010 Rafal Pocztarski"
 echo "This program comes with ABSOLUTELY NO WARRANTY."
 echo "You may redistribute it under certain conditions."
-echo "See LICENSE for details. http://github.com/rsp/forked"
+echo "See LICENSE for details. https://github.com/rsp/forked"
 echo
 me=`git config github.user || whoami`
 if [ $# -lt 2 ] || [ $# -gt 3 ]; then
     echo "Forked clones your forked version of a github repository"
-    echo "using conventions from: http://help.github.com/forking/"
+    echo "using conventions from: https://help.github.com/forking/"
     echo
     echo "Usage: forked USER REPOSITORY [DIRECTORY]"
     echo "Clones repository:"
@@ -19,7 +19,7 @@ if [ $# -lt 2 ] || [ $# -gt 3 ]; then
     echo "in directory DIRECTORY if specified or REPOSITORY otherwise."
     echo
     echo "You have to fork it on github first using the Fork button on:"
-    echo "    http://github.com/USER/REPOSITORY"
+    echo "    https://github.com/USER/REPOSITORY"
     echo "and set your github username using:"
     echo "    git config --global github.user USERNAME"
     echo "if it is different than your local login name."
@@ -60,16 +60,16 @@ git fetch upstream && {
     echo -e "- push your changes to github using:\tgit push origin"
     echo -e "- fetch upstream changes using:\t\tgit fetch upstream"
     echo -e "- merge upstream changes using:\t\tgit merge upstream/master"
-    echo "See: http://help.github.com/forking/"
+    echo "See: https://help.github.com/forking/"
     echo
 } || {
     echo -e "\nForked: ERROR"
     echo "Make sure you have forked the project '$repo' using the Fork button on:"
-    echo "    http://github.com/$user/$repo"
+    echo "    https://github.com/$user/$repo"
     echo "You should see: '$me/$repo forked from $user/$repo' on this page:"
-    echo "    http://github.com/$me/$repo"
+    echo "    https://github.com/$me/$repo"
     echo "You must have git and ssh configured correctly to work with github."
-    echo "See: http://help.github.com/ for details."
+    echo "See: https://help.github.com/ for details."
     echo
     exit 3
 }

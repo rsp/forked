@@ -4,7 +4,7 @@ This program comes with ABSOLUTELY NO WARRANTY.
 You may redistribute it under certain conditions.
 
 Forked clones your forked version of a github repository
-using conventions from: http://help.github.com/forking/
+using conventions from: https://help.github.com/forking/
 
 Usage: forked USER REPOSITORY [DIRECTORY]
 Clones repository:
@@ -14,7 +14,7 @@ and adds upstream remote:
 in directory DIRECTORY if specified or REPOSITORY otherwise.
 
 You have to fork it on github first using the Fork button on:
-    http://github.com/USER/REPOSITORY
+    https://github.com/USER/REPOSITORY
 and set your github username using:
     git config --global github.user USERNAME
 if it is different than your local login name.
