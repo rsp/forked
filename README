@@ -2,7 +2,6 @@
 Forked - Copyright (c) 2010 Rafal Pocztarski
 This program comes with ABSOLUTELY NO WARRANTY.
 You may redistribute it under certain conditions.
-See LICENSE for details. http://github.com/rsp/forked
 
 Forked clones your forked version of a github repository
 using conventions from: http://help.github.com/forking/
@@ -11,7 +10,7 @@ Usage: forked USER REPOSITORY [DIRECTORY]
 Clones repository:
     git@github.com:YOU/REPOSITORY.git
 and adds upstream remote:
-    git://github.com/USER/REPOSITORY.git
+    git@github.com:USER/REPOSITORY.git
 in directory DIRECTORY if specified or REPOSITORY otherwise.
 
 You have to fork it on github first using the Fork button on:
