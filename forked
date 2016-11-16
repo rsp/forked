@@ -1,77 +1,102 @@
 #!/bin/bash
 # RSP 2010-09-16
-echo
-echo "Forked - Copyright (c) 2010 Rafal Pocztarski"
-echo "This program comes with ABSOLUTELY NO WARRANTY."
-echo "You may redistribute it under certain conditions."
-echo "See LICENSE for details. https://github.com/rsp/forked"
-echo
+
+cat << END
+
+Forked - Copyright (c) 2010 Rafal Pocztarski
+This program comes with ABSOLUTELY NO WARRANTY.
+You may redistribute it under certain conditions.
+See LICENSE for details. https://github.com/rsp/forked
+
+END
+
 me=`git config github.user || whoami`
 if [ $# -lt 2 ] || [ $# -gt 3 ]; then
-    echo "Forked clones your forked version of a github repository"
-    echo "using conventions from: https://help.github.com/forking/"
-    echo
-    echo "Usage: forked USER REPOSITORY [DIRECTORY]"
-    echo "Clones repository:"
-    echo "    git@github.com:YOU/REPOSITORY.git"
-    echo "and adds upstream remote:"
-    echo "    git@github.com:USER/REPOSITORY.git"
-    echo "in directory DIRECTORY if specified or REPOSITORY otherwise."
-    echo
-    echo "You have to fork it on github first using the Fork button on:"
-    echo "    https://github.com/USER/REPOSITORY"
-    echo "and set your github username using:"
-    echo "    git config --global github.user USERNAME"
-    echo "if it is different than your local login name."
-    echo "Your github username that would be used right now is: $me"
-    echo
+
+cat << END
+
+	Forked clones your forked version of a github repository
+	using conventions from: https://help.github.com/forking/
+
+	Usage: forked USER REPOSITORY [DIRECTORY]
+	Clones repository:
+		git@github.com:YOU/REPOSITORY.git
+	and adds upstream remote:
+		git@github.com:USER/REPOSITORY.git
+	in directory DIRECTORY if specified or REPOSITORY otherwise.
+
+	You have to fork it on github first using the Fork button on:
+		https://github.com/USER/REPOSITORY
+	and set your github username using:
+		git config --global github.user USERNAME
+	if it is different than your local login name.
+	Your github username that would be used right now is: $me
+
+END
+
     exit 1
 fi
+
 user=$1
 repo=$2
+
 if [ $# -eq 3 ]; then
     dir=$3
 else
     dir=$repo
 fi
+
 origin=git@github.com:$me/$repo.git
 upstream=git@github.com:$user/$repo.git
-echo "Your github username is set to: $me"
-echo "Forked is going to clone:"
-echo "    $origin"
-echo "and add remote upstream:"
-echo "    $upstream"
-echo "in directory $dir"
-echo
+
+cat << END
+Your github username is set to: $me
+Forked is going to clone:
+    $origin
+and add remote upstream:
+    $upstream
+in directory $dir
+
+END
+
 if [ -e $dir ] && [ "$(ls -A1 $dir | wc -l)" -ne 0 ]; then
-    echo "$dir already exists and is not an empty directory."
-    echo "Remove it manually or run forked with different arguments:"
-    echo "    forked USER REPOSITORY SOME_OTHER_DIRECTORY_NAME"
-    echo
+cat << END
+    $dir already exists and is not an empty directory."
+    Remove it manually or run forked with different arguments:"
+        forked USER REPOSITORY SOME_OTHER_DIRECTORY_NAME"
+
+END
     exit 2
 fi
+
 git clone $origin $dir && \
 cd $dir && \
 git remote add upstream $upstream && \
 git fetch upstream && {
-    echo -e "\nForked: DONE"
-    echo "The $repo repository has been cloned in:"
-    echo $PWD
-    echo "You should now be able to:"
-    echo -e "- push your changes to github using:\tgit push origin"
-    echo -e "- fetch upstream changes using:\t\tgit fetch upstream"
-    echo -e "- merge upstream changes using:\t\tgit merge upstream/master"
-    echo "See: https://help.github.com/forking/"
-    echo
+cat << END
+
+    Forked: DONE
+    The $repo repository has been cloned in:
+    $PWD
+    You should now be able to:
+    - push your changes to github using:\tgit push origin
+    - fetch upstream changes using:\t\tgit fetch upstream
+    - merge upstream changes using:\t\tgit merge upstream/master
+    See: https://help.github.com/forking/
+
+END
 } || {
-    echo -e "\nForked: ERROR"
-    echo "Make sure you have forked the project '$repo' using the Fork button on:"
-    echo "    https://github.com/$user/$repo"
-    echo "You should see: '$me/$repo forked from $user/$repo' on this page:"
-    echo "    https://github.com/$me/$repo"
-    echo "You must have git and ssh configured correctly to work with github."
-    echo "See: https://help.github.com/ for details."
-    echo
+cat << END
+
+    Forked: ERROR
+    Make sure you have forked the project '$repo' using the Fork button on:
+        https://github.com/$user/$repo
+    You should see: '$me/$repo forked from $user/$repo' on this page:
+        https://github.com/$me/$repo
+    You must have git and ssh configured correctly to work with github.
+    See: https://help.github.com/ for details.
+
+END
     exit 3
 }
 
